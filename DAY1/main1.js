@@ -1,5 +1,4 @@
 // Hashing is a process that transforms input data (of any size) into a fixed-size string of characters.
-
 // Hash functions have several important properties:
 
 // 1.  **Deterministic:** The same input will always produce the same output.
@@ -18,20 +17,20 @@
 //Find The Hash That have 5 zeros in the starting
 const crypto = require('crypto')
 
-// function findHash(n) {
-//   let input = 0
-//   while (true) {
-//     let stringArg = input.toString()
-//     const hash = crypto.createHash('sha256').update(stringArg).digest('hex')
-//     if (hash.startsWith(n)) {
-//       return {hash,input}
-//     }
-//     input++;
-//   }
-// }
+function findHash(n) {
+  let input = 0
+  while (true) {
+    let stringArg = input.toString()
+    const hash = crypto.createHash('sha256').update(stringArg).digest('hex')
+    if (hash.startsWith(n)) {
+      return {hash,input}
+    }
+    input++;
+  }
+}
 
-// const ans = findHash('00000')
-// console.log(`The Hash is ${ans.hash} and Input String is ${ans.input} `);
+const ans2 = findHash('00000')
+console.log(`The Hash is ${ans2.hash} and Input String is ${ans.input} `);
 
 //Find The Nonce of given String in which hash have 5 zeros in starting
 //String is 1000xdevs
