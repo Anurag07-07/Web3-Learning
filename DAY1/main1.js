@@ -8,10 +8,10 @@
 // 5.  **Collision resistance:** It should be computationally infeasible to find two different inputs that produce the same hash output.
 
 // Hashing Algorithm is sha256
-// const crypto = require('crypto')
-// const value = "Anurag"
-// const hash = crypto.createHash('sha256').update(value).digest('hex')
-// console.log(hash);
+const crypto = require('crypto')
+const value = "Anurag"
+const hash = crypto.createHash('sha256').update(value).digest('hex')
+console.log(hash);
 
 
 //Find The Hash That have 5 zeros in the starting
