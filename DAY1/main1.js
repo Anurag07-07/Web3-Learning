@@ -8,42 +8,45 @@
 // 5.  **Collision resistance:** It should be computationally infeasible to find two different inputs that produce the same hash output.
 
 // Hashing Algorithm is sha256
-const crypto = require('crypto')
-const value = "100xdevs"
-const hash = crypto.createHash('sha256').update(value).digest('hex')
-console.log(hash);
- 
+// const crypto = require('crypto')
+// const data = "100xdevs" 
+// const Hash = crypto.createHash('sha256').update(data).digest('hex')
+// console.log(Hash);
+
+
 //Find The Hash That have 5 zeros in the starting
+// const crypto = require('crypto')
+// function findHash(n){
+//   let input = 0;
+//   while (true) {
+//     const inputStr = input.toString()
+//     const hash = crypto.createHash('sha256').update(inputStr).digest('hex')
+//     if (hash.startsWith(n)) {
+//       return {inputStr}
+//     }
+//     input++
+//   }
+// }
 
-function fiveZeroes(n){
-  let input = 0
-  while(true){
-    let inputStr = input.toString()
-    let hash =  crypto.createHash('sha256').update(inputStr).digest('hex')
-    if (hash.startsWith(n)) {
-      return {hash,inputStr}
-    }
-    input++
-  }
-}
+// const ans = findHash('00000')
+// console.log(ans.inputStr);
 
-const ans = fiveZeroes('00000')
-console.log(`The Hash is ${ans['hash']} and Input String is ${ans['inputStr']}`);
 
 //Find The Nonce of given String in which hash have 5 zeros in starting
 //String is 1000xdevs
 
-function findNonce(params) {
-  let input = 0;
+const crypto = require('crypto')
+function findNonce(n){
+  let input = 0
   while (true) {
-    let inputStr = `Anurag send => Rs 100 to Aniket`+input.toString()
-    let ans = crypto.createHash('sha256').update(inputStr).digest('hex')
-    if (ans.startsWith(params)) {
-      return {nonce:input,hash:ans}
+    let inputStr = `Anurag => Aniket | Rs 100 `+input.toString()
+    let hash = crypto.createHash('sha256').update(inputStr).digest('hex')
+    if (hash.startsWith(n)) {
+      return {nonce:input,hash,inputStr}
     }
     input++
   }
 }
 
-const ans1 = findNonce('00000')
-console.log(`The Nonce is ${ans1.nonce} The Hash is ${ans1.hash}`);
+const ans = findNonce('00000')
+console.log(`The Nonce is ${ans.nonce} Hash is  ${ans.hash} and Input String is ${ans.inputStr}`);
